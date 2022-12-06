@@ -1,10 +1,10 @@
 "Angle between two vectors"
 function ∠θ(vec1::NTuple{3, T}, vec2::NTuple{3, T}, norm1::U, norm2::U) where {T <: Real, U <: Real}
-    return acos(min(1, sum(vec1.*vec2)/norm1/norm2))
+    return acos(max(-1, min(1, sum(vec1.*vec2)/norm1/norm2)))
 end
 ∠θ(vec1::NTuple{3, T}, vec2::NTuple{3, T}) where {T <: Real} = ∠θ(vec1, vec2, norm(vec1), norm(vec2))
 function ∠θ(vec1::AbstractVector, vec2::AbstractVector, norm1::Real, norm2::Real)
-    return acos(min(1, (vec1⋅vec2)/norm1/norm2))
+    return acos(max(-1, min(1, (vec1⋅vec2)/norm1/norm2)))
 end
 ∠θ(vec1::AbstractVector, vec2::AbstractVector) = ∠θ(vec1, vec2, norm(vec1), norm(vec2))
 
